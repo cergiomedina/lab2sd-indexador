@@ -1,0 +1,47 @@
+**********************************INICIALIZACIÓN BASE DE DATOS*********************************
+Para iniciar el servidor de base de datos MongoDB debe ingresar a la terminal en modo
+administrador. Seguido a esto debe dirigirse a la ruta "C:\Program Files\MongoDB\Server\3.2\bin"
+y correr el ejecutable "mongod.exe" con el comando "mongod.exe --dbpath ." y luego correr con
+otro terminal el ejecutable "mongo.exe".
+
+
+**********************************CREACIÓN BASE DE DATOS***************************************
+Para crear la base de datos en MongoDB debe ejecutar en "mongo.exe" el comando
+"use <nombre_BD>" y este debe corresponder al mismo nombre entregado en el fichero
+parametros.ini.
+
+****************************************PARAMETROS.INI*****************************************
+Este archivo será el de configuración de la aplicación, contendrá los nombres de el fichero
+de entrada, la base de datos, la colección de documentos y el indice invertido. El formato
+del fichero corresponde al mostrado a continuación:
+
+1. <archivo_a_indexar>.xml (Solo puede ser un .xml)
+2. <nommbre_BD>
+3. <nombre_colección_documentos>
+4. <nombre_indice_invertido>
+
+********************************************NOTA***********************************************
+Si el poblamiento de la BD es muy lento, se debe ejecutar el siguiente comando en "mongo.exe",
+posterior al proceso de crear las colecciones, por lo mismo, se entrega un archivo prueba.xml
+el cual tiene un menor tamaño, se recomienda utilizar el programa con ese archivo para luego 
+ejecutar el comando "db.<nombre_indice_invertido>.createIndex({palabra:1})".
+
+*******************************************FORMATOS********************************************
+La aplicación guarda la información en los siguientes formatos:
+<nombre_colección_documentos>
+"id" : 
+"título" : 
+"texto" : 
+<nombre_indice_invertido>
+"id" :
+"palabra" :
+"documentos" :	En este lugar se encuentra el nombre del documento, así como la cantidad de
+		veces que se repite la "palabra" en ese documento.
+
+********************************************CONSULTADOR****************************************
+La aplicación también cuenta con un método de consulta, el cual debe ser ejecutado
+especificamente DESPUÉS de la creación de la base de datos.
+
+Para utilizar el método de consulta se debe ejecutar el proyecto "consultador" y escribir
+por terminal la palabra a buscar y el programa retornará la información en caso de encontarla
+en la BD.
