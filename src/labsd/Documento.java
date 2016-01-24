@@ -142,13 +142,13 @@ public class Documento {
                   //  System.out.println("Palabra [ "+indice_palabra.get(i)+ " ] no existe");
                     BasicDBObject palabra_nueva = new BasicDBObject();
                     palabra_nueva.put("palabra",indice_palabra.get(i));
-                    palabra_nueva.put("documentos", new BasicDBObject(nombre,indice_cantidad.get(i)));
+                    palabra_nueva.put("documentos", new BasicDBObject("Documento-0",nombre));
 
                     indice.insert(palabra_nueva);
                 }else{
                     DBObject consulta = new BasicDBObject("palabra",indice_palabra.get(i));
                     DBObject actualizar = new BasicDBObject();
-                    actualizar.put("$set", new BasicDBObject("documentos."+nombre,indice_cantidad.get(i)));
+                    actualizar.put("$set", new BasicDBObject("documentos.Documento-"+Integer.toString(cursor.count()),nombre));
                     WriteResult result = indice.update(consulta, actualizar);
                }        
            }
